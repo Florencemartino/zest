@@ -1,7 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
 
 function App() {
+  const [currentTime, setCurrentTime] = useState(0);
+
+
+  fetch('/time')
+      .then(res => {
+
+        if (res.status === 200) {
+          return res.json()
+        } else {
+          throw res.status
+        }
+      })
+
+      .then(data => {
+        setCurrentTime(data.time);
+      });
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +36,9 @@ function App() {
         >
           Learn React
         </a>
+
+        <p>The current time is {currentTime}.</p>
+
       </header>
     </div>
   );
