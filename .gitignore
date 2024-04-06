@@ -39,3 +39,6 @@ venv
 app.db
 
 node_modules
+.DS_Store
+venv
+__pycache__
